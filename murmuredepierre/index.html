@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Les Murmures de Pierre</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" type="image/png" href="logo.png">
+		<link rel="stylesheet" href="style/style_index.css">
+	</head>
+	<body>
+		<div class="rectangle-dessus">
+			<h1>Les Murmures de pierre</h1>
+			<div class="langue-menu">
+				<a href="nl/index.html"> <img src="images/nl.png" alt="FR" width="40"> </a>
+				<a href="en/index.html"> <img src="images/en.png" alt="EN" width="40"> </a>
+				<a href="de/index.html"> <img src="images/de.png" alt="FR" width="40"> </a>
+				<div class="menu">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		</div>
+		<div class="side-menu">
+			<div class="close-menu">×</div>
+			<div class="menu"><h1><u>Menu</u></h1></div>
+			<div class="titre">
+			    <div class="Galerie"><a href=""><u>Galerie</u></a>
+			    <p>Parcourez les belles photo du gite</p>
+				</div>
+			</div>
+			<div class="titre">
+			    <div class="Activité"><a href=""><u>Acitivités</u></a>
+			    <p>Découvrez toutes les activités au alentours du gite</p>
+				</div>
+			</div>
+			<div class="titre">
+				<div class="informations"><a href=""><u>informations</u></a>
+				<p> Découvrez les tarifs ainsi que d'autre informations supplémentaires</p>
+				</div>
+			</div>
+			<div class="titre">
+				<div class="Reserve"><a href=""><u>Réserver & Disponiblité</u></a>
+				<p>Réserver depuis votre navigateur</p>
+				</div>
+			</div>
+			<div class="titre">
+				<div class="Contact"><a href=""><u>Contact</u></a>
+				<p>autres</p>
+				</div>
+			</div>
+		</div>
+		<div class="bas-page">
+			<img src="images/landing.jpg" alt="gite_pricipale" class="grand-image">
+				<img src="images/gite1.jpg" alt="gite1">
+				<img src="images/gite2.jpg" alt="gite2">
+				<img src="images/gite3.jpg" alt="gite3">
+		</div>
+		<script>
+			const menu = document.querySelector('.menu');
+			const sideMenu = document.querySelector('.side-menu');
+			const closeMenu = document.querySelector('.close-menu');
+			menu.addEventListener('click', function() {
+				sideMenu.style.right = sideMenu.style.right = '0px';
+				sideMenu.classList.add('open');
+			});
+			closeMenu.addEventListener('click', function() {
+				sideMenu.style.right = '-350px'; // remet le menu hors écran
+				sideMenu.classList.remove('open');
+			});
+		</script>
+	</body>
+</html>

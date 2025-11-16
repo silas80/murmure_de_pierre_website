@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Murmures de Pierre - Gîte de charme</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <style>
+    /* --- RESET DE BASE --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #faf9f6;
+      color: #333;
+    }
+
+    /* --- HEADER --- */
+    .rectangle-dessus {
+      background-color: #3d5a40;
+      color: white;
+      width: 100%;
+      height: 100px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+
+    .rectangle-dessus h1 {
+      font-size: 28px;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+
+    .langue-menu {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .langue-menu img {
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .langue-menu img:hover {
+      transform: scale(1.1);
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .menu span {
+      height: 3px;
+      width: 28px;
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    /* --- MENU LATÉRAL --- */
+    .side-menu {
+      display: flex;
+      flex-direction: column;
+      background-color: #e5e5dc;
+      position: fixed;
+      top: 0;
+      right: -350px;
+      height: 100%;
+      width: 350px;
+      transition: right 0.5s ease;
+      box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      z-index: 11;
+    }
+
+    .side-menu h1 {
+      color: #3d5a40;
+      font-size: 24px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #3d5a40;
+      padding-bottom: 10px;
+    }
+
+    .side-menu a {
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 10px 0 5px;
+      transition: color 0.2s;
+    }
+
+    .side-menu a:hover {
+      color: #3d5a40;
+    }
+
+    .side-menu p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .close-menu {
+      align-self: flex-end;
+      font-size: 32px;
+      cursor: pointer;
+      color: #3d5a40;
+      margin-top: -10px;
+    }
+
+    /* --- SECTION HERO --- */
+    .hero {
+      background-image: url('https://picsum.photos/1600/900?grayscale');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero-content h2 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .hero-content button {
+      padding: 12px 25px;
+      font-size: 16px;
+      background-color: #3d5a40;
+      border: none;
+      color: white;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .hero-content button:hover {
+      background-color: #2f4732;
+    }
+
+    /* --- SECTIONS --- */
+    section {
+      padding: 80px 10%;
+    }
+
+    .galerie {
+      background-color: #f5f5f0;
+    }
+
+    .galerie h2,
+    .activites h2,
+    .infos h2 {
+      font-size: 28px;
+      color: #3d5a40;
+      margin-bottom: 20px;
+    }
+
+    .galerie-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .galerie-images img {
+      width: 100%;
+      border-radius: 10px;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .galerie-images img:hover {
+      transform: scale(1.05);
+    }
+
+    .activites ul {
+      list-style: none;
+      line-height: 1.8;
+      font-size: 16px;
+      color: #444;
+    }
+
+    .infos {
+      background-color: #f9f9f9;
+    }
+
+    .infos p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #444;
+      max-width: 700px;
+    }
+
+    /* --- BAS DE PAGE --- */
+    footer {
+      background-color: #3d5a40;
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+
+    footer p {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
+      .hero-content h2 {
+        font-size: 32px;
+      }
+
+      .side-menu {
+        width: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="rectangle-dessus">
+    <h1>Les Murmures de Pierre</h1>
+    <div class="langue-menu">
+      <a href="nl/index.html"><img src="https://flagcdn.com/w40/nl.png" alt="NL" width="40"></a>
+      <a href="en/index.html"><img src="https://flagcdn.com/w40/gb.png" alt="EN" width="40"></a>
+      <a href="de/index.html"><img src="https://flagcdn.com/w40/de.png" alt="DE" width="40"></a>
+      <div class="menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENU LATÉRAL -->
+  <div class="side-menu">
+    <div class="close-menu">&times;</div>
+    <h1>Menu</h1>
+    <a href="#galerie">Galerie</a>
+    <p>Découvrez les plus beaux clichés du gîte et de ses environs.</p>
+    <a href="#activites">Activités</a>
+    <p>Randonnées, visites, gastronomie et détente : explorez la région.</p>
+    <a href="#infos">Informations</a>
+    <p>Tarifs, horaires et tout ce qu’il faut savoir avant votre séjour.</p>
+    <a href="#contact">Réserver</a>
+    <p>Consultez nos disponibilités et réservez directement.</p>
+    <a href="#contact">Contact</a>
+    <p>Une question ? Contactez-nous facilement.</p>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Bienvenue aux Murmures de Pierre</h2>
+      <p>Un gîte de charme niché au cœur de la nature, entre sérénité et confort.</p>
+      <button onclick="document.getElementById('infos').scrollIntoView({behavior:'smooth'})">Découvrir</button>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section id="galerie" class="galerie">
+    <h2>Galerie</h2>
+    <div class="galerie-images">
+      <img src="https://picsum.photos/400/250?random=1" alt="Photo du gîte">
+      <img src="https://picsum.photos/400/250?random=2" alt="Intérieur du gîte">
+      <img src="https://picsum.photos/400/250?random=3" alt="Vue extérieure">
+      <img src="https://picsum.photos/400/250?random=4" alt="Jardin du gîte">
+    </div>
+  </section>
+
+  <!-- ACTIVITÉS -->
+  <section id="activites" class="activites">
+    <h2>Activités à proximité</h2>
+    <ul>
+      <li>Randonnées dans les collines environnantes</li>
+      <li>Dégustations de produits locaux</li>
+      <li>Balades à vélo ou à cheval</li>
+      <li>Visite de villages pittoresques</li>
+      <li>Séances bien-être et spa à proximité</li>
+    </ul>
+  </section>
+
+  <!-- INFORMATIONS -->
+  <section id="infos" class="infos">
+    <h2>Informations & Réservations</h2>
+    <p>
+      Le gîte “Les Murmures de Pierre” peut accueillir jusqu’à 6 personnes dans un cadre authentique.
+      Vous profiterez d’un grand jardin, d’une cuisine équipée et d’un espace détente.
+      Les tarifs varient selon la saison, à partir de <strong>90€ la nuit</strong>.
+    </p>
+  </section>
+
+  <!-- CONTACT -->
+  <footer id="contact">
+    <h3>Contact</h3>
+    <p>Email : contact@lesmurmuresdepierre.fr | Téléphone : 06 00 00 00 00</p>
+    <p>&copy; 2025 Les Murmures de Pierre - Tous droits réservés</p>
+  </footer>
+
+  <!-- SCRIPT MENU -->
+  <script>
+    const menu = document.querySelector('.menu');
+    const sideMenu = document.querySelector('.side-menu');
+    const closeMenu = document.querySelector('.close-menu');
+
+    menu.addEventListener('click', () => {
+      sideMenu.style.right = '0';
+    });
+
+    closeMenu.addEventListener('click', () => {
+      sideMenu.style.right = '-350px';
+    });
+  </script>
+
+</body>
+</html>
